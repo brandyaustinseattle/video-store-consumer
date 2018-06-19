@@ -4,7 +4,6 @@ import axios from 'axios';
 
 class MovieLibrary extends Component {
 
-
   constructor() {
     super();
 
@@ -19,7 +18,6 @@ class MovieLibrary extends Component {
 
     axios.get(MOVIE_URL)
     .then((response) => {
-      console.log(response);
 
       this.setState({movies: response.data});
     })
@@ -32,9 +30,6 @@ class MovieLibrary extends Component {
   render() {
 
     const movies =  this.state.movies.map((movie, index) => {
-
-      {console.log('here');}
-      {console.log(movie);}
 
       return(
         <section>
@@ -49,7 +44,7 @@ class MovieLibrary extends Component {
 
     return(
       <section>
-      {movies}
+        {movies}
       </section>
     )
 
