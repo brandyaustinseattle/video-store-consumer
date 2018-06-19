@@ -23,6 +23,8 @@ class App extends Component {
     }
   }
 
+  //what do we do w/ updateStatusCallback which we originally had with movies
+  //do we need to put it in the route area
   updateStatus = (message, type) => {
     this.setState({
       status: {
@@ -69,9 +71,6 @@ class App extends Component {
           <Status message={this.state.status.message} types={this.state.status.type} />
         </div>
 
-        <div>
-          <MovieLibrary updateStatusCallback={this.updateStatus} />
-        </div>
       </div>
     );
   }

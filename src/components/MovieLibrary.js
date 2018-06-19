@@ -26,7 +26,6 @@ class MovieLibrary extends Component {
     .catch((error) => {
 
       this.props.updateStatusCallback(error.message, 'error');
-
     });
   }
 
@@ -34,13 +33,16 @@ class MovieLibrary extends Component {
 
     const movies =  this.state.movies.map((movie, index) => {
 
+      {console.log('here');}
+      {console.log(movie);}
+
       return(
         <section>
           < Movie key={index}
             title={movie.title}
             overview={movie.overview}
             release_date={movie.release_date}
-            inventory={movie.inventory} />
+            image_url={movie.image_url} />
         </section>
 
       )

@@ -6,8 +6,7 @@ class Movie extends Component {
     title: PropTypes.string.isRequired,
     overview: PropTypes.string,
     release_date: PropTypes.string,
-    inventory: PropTypes.number.isRequired
-
+    image_url: PropTypes.string.isRequired
   }
 
   render() {
@@ -15,8 +14,13 @@ class Movie extends Component {
       <table>
 
         <tr>
-          <th>Title:  </th>
-          <td>{this.props.title}</td>
+          <th>{this.props.title}</th>
+        </tr>
+
+          <tr>
+            <td>
+              <img src={this.props.image_url} alt={this.props.title}></img>
+            </td>
           </tr>
 
         <tr>
@@ -25,14 +29,9 @@ class Movie extends Component {
         </tr>
 
         <tr>
-          <th>Inventory:  </th>
-          <td>{this.props.inventory}</td>
-          </tr>
-
-        <tr>
           <th>Overview:  </th>
           <td>{this.props.overview}</td>
-          </tr>
+        </tr>
       </table>
 
     )
