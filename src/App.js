@@ -37,6 +37,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
+        <div>
+          <Status message={this.state.status.message} types={this.state.status.type} />
+        </div>
+
         <header>
           <h1 className="App-title">blockbuster</h1>
           <Router>
@@ -62,14 +67,11 @@ class App extends Component {
               <Route path="/Search" component={Search} />
               <Route path="/Customers" component={Customers} />
               <Route path="/MovieLibrary" component={MovieLibrary} />
+
             </div>
           </Router>
 
         </header>
-
-        <div>
-          <Status message={this.state.status.message} types={this.state.status.type} />
-        </div>
 
       </div>
     );

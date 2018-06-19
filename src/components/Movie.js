@@ -13,6 +13,7 @@ class Movie extends Component {
     return(
       <table>
 
+      <tbody>
         <tr>
           <th>{this.props.title}</th>
         </tr>
@@ -32,6 +33,8 @@ class Movie extends Component {
           <th>Overview:  </th>
           <td>{this.props.overview}</td>
         </tr>
+      </tbody>
+
       </table>
 
     )

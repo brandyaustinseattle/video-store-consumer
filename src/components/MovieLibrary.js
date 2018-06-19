@@ -44,7 +44,6 @@ class MovieLibrary extends Component {
             release_date={movie.release_date}
             image_url={movie.image_url} />
         </section>
-
       )
     });
 
