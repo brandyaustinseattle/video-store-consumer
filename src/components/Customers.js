@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 const Customers = () => {
 
 
-return;
+return(
+  null
+)
 };
 
 
