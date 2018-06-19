@@ -25,7 +25,7 @@ class MovieLibrary extends Component {
     })
     .catch((error) => {
 
-      this.props.updateStatusCallback(error.message, 'error');
+      // this.props.updateStatusCallback(error.message, 'error');
     });
   }
 
