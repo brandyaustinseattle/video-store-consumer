@@ -12,25 +12,28 @@ class Movie extends Component {
 
   render() {
     return(
-      <section>
+      <table>
 
-      <div>
-      {this.props.title}
-      </div>
+        <tr>
+          <th>Title:  </th>
+          <td>{this.props.title}</td>
+          </tr>
 
-      <div>
-      {this.props.overview}
-      </div>
+        <tr>
+          <th>Release:  </th>
+          <td>{this.props.release_date}</td>
+        </tr>
 
-      <div>
-      {this.props.release_date}
-      </div>
+        <tr>
+          <th>Inventory:  </th>
+          <td>{this.props.inventory}</td>
+          </tr>
 
-      <div>
-      {this.props.inventory}
-      </div>
-
-      </section>
+        <tr>
+          <th>Overview:  </th>
+          <td>{this.props.overview}</td>
+          </tr>
+      </table>
 
     )
 
