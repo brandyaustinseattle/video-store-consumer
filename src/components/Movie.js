@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import AddToLibraryForm from './AddToLibraryForm';
+
 
 class Movie extends Component {
   static propTypes = {
@@ -33,8 +35,9 @@ class Movie extends Component {
           <th>Overview:  </th>
           <td>{this.props.overview}</td>
         </tr>
-      </tbody>
 
+      </tbody>
+      <AddToLibraryForm title={this.props.title} overview={this.props.overview} release_date={this.props.release_date} image_url={this.props.image_url}/>
       </table>
 
     )

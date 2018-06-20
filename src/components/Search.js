@@ -26,7 +26,7 @@ class Search extends Component {
       this.setState({searchResults: response.data});
   })
     .catch((error) => {
-      this.props.updateStatusCallback(error.message, 'error');
+      // this.props.updateStatusCallback(error.message, 'error');
     });
   }
 
