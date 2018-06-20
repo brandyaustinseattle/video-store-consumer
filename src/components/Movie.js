@@ -13,6 +13,7 @@ class Movie extends Component {
 
   render() {
     return(
+      <section>
       <table>
 
       <tbody>
@@ -37,9 +38,12 @@ class Movie extends Component {
         </tr>
 
       </tbody>
-      <AddToLibraryForm title={this.props.title} overview={this.props.overview} release_date={this.props.release_date} image_url={this.props.image_url}/>
+
       </table>
 
+        <AddToLibraryForm title={this.props.title} overview={this.props.overview} release_date={this.props.release_date} image_url={this.props.image_url}/>
+
+        </section>
     )
 
   }
