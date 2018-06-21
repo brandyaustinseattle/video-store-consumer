@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import MovieLibrary from './components/MovieLibrary';
 import Movie from './components/Movie';
+import Customer from './components/Customer'
 import Search from './components/Search';
 import Customers from './components/Customers';
 import Home from './components/Home';

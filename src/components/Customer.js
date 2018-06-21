@@ -9,9 +9,16 @@ class Customer extends Component {
     checked_out: PropTypes.number
   }
 
+  onClickHandler = (event) => {
+    console.log('we got clicked');
+    console.log(event.target);
+    this.props.rentalCallback(event.target)
+  }
+
   render() {
 
     return(
+      <section>
       <table>
         <div>
           {this.props.name}
@@ -24,7 +31,11 @@ class Customer extends Component {
         <div>
           {this.props.checked_out}
         </div>
-      </table>
+        <div>
+        <button onClick={this.onClickHandler}>add rental</button>
+        </div>
+      </table>  
+      </section>
     )
   }
 }
