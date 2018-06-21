@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MovieLibrary from './components/MovieLibrary';
+import Movie from './components/Movie';
 import Search from './components/Search';
 import Customers from './components/Customers';
 import Home from './components/Home';
@@ -16,11 +17,29 @@ class App extends Component {
     super();
 
     this.state = {
+
+        movie:'',
+        customer:'',
+
       status: {
         message: 'loaded the page',
         type: 'success'
       }
     }
+  }
+
+  selectedCustomer = (customer) => {
+    this.setState({
+        customer:customer.id
+    });
+
+  }
+
+  selectedMovie = (movie) => {
+    this.setState({
+        movie: movie.title,
+    });
+
   }
 
   //what do we do w/ updateStatusCallback which we originally had with movies
@@ -44,6 +63,8 @@ class App extends Component {
 
         <header>
           <h1 className="App-title">blockbuster</h1>
+          <h5>Selected Movie: {this.state.movie}</h5>
+          <h5>Selected Customer: {this.state.customer}</h5>
           <Router>
             <div>
               <ul>
@@ -65,8 +86,16 @@ class App extends Component {
 
               <Route exact path="/" component={Home} />
               <Route path="/Search" component={Search} />
-              <Route path="/Customers" component={Customers} />
-              <Route path="/MovieLibrary" component={MovieLibrary} />
+              <Route path="/Customers" component={Customers}
+               render = {() => {
+                 return(<MovieLibrary rentalCallback={this.selectedCustomer}/>)
+               }
+             }/>
+              <Route path="/MovieLibrary" component={MovieLibrary}
+              render = {() => {
+                return(<Movie rentalCallback={this.selectedMovie}/>)
+              }
+            }/>
 
             </div>
           </Router>

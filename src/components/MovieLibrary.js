@@ -27,6 +27,7 @@ class MovieLibrary extends Component {
     });
   }
 
+
   render() {
 
     const movies =  this.state.movies.map((movie, index) => {
@@ -37,7 +38,8 @@ class MovieLibrary extends Component {
             title={movie.title}
             overview={movie.overview}
             release_date={movie.release_date}
-            image_url={movie.image_url} />
+            image_url={movie.image_url}
+            inLibrary={false}/>
         </section>
       )
     });
@@ -45,6 +47,7 @@ class MovieLibrary extends Component {
     return(
       <section>
         {movies}
+
       </section>
     )
 

@@ -26,6 +26,11 @@ class Customers extends Component {
     });
   }
 
+  onClickHandler = () => {
+    console.log('we got clicked');
+    this.props.rentalCallback
+  }
+
   render() {
 
     const customers =  this.state.customers.map((customer, index) => {
@@ -36,6 +41,7 @@ class Customers extends Component {
             name={customer.name}
             phone={customer.phone}
             checked_out={customer.movies_checked_out_count} />
+            <button onClick={this.onClickHandler}>add rental</button>
         </section>
       )
     });
@@ -43,6 +49,7 @@ class Customers extends Component {
     return(
       <section>
         {customers}
+
       </section>
     )
   }

@@ -39,7 +39,8 @@ class Search extends Component {
         title={movie.title}
         overview={movie.overview}
         release_date={movie.release_date}
-        image_url={movie.image_url} />
+        image_url={movie.image_url}
+        inLibrary={true}/>
       )
     });
 
