@@ -4,18 +4,23 @@ import PropTypes from 'prop-types';
 class Customer extends Component {
 
   static propTypes = {
+    customerId: PropTypes.string,
     name: PropTypes.string,
     phone: PropTypes.string,
-    checked_out: PropTypes.number
+    checkedOut: PropTypes.number,
+    rentMovie: PropTypes.func
   }
 
   onClickHandler = (event) => {
-    console.log('we got clicked');
-    console.log(event.target);
-    this.props.rentalCallback(event.target)
+    let customerInfo = event.target;
+    this.props.rentMovie(customerInfo);
   }
 
   render() {
+
+    let customerInfo = {};
+    customerInfo["customerId"] = this.props.customerId;
+    customerInfo["name"] = this.props.name;
 
     return(
       <section>
@@ -29,12 +34,12 @@ class Customer extends Component {
         </div>
 
         <div>
-          {this.props.checked_out}
+          {this.props.checkedOut}
         </div>
         <div>
-        <button onClick={this.onClickHandler}>add rental</button>
+        <button id={this.props.customerId} name={this.props.name} onClick={this.onClickHandler}>add rental</button>
         </div>
-      </table>  
+      </table>
       </section>
     )
   }

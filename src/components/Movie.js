@@ -13,7 +13,6 @@ class Movie extends Component {
   }
 
   onClickHandler = () => {
-    console.log('we got clicked');
     this.props.rentalCallback()
   }
 
@@ -31,11 +30,6 @@ class Movie extends Component {
 
      };
     }
-
-    const pleaseShow = displayButton();
-
-    // const displayAdd = this.props.inLibrary;
-    // const displayRental = !this.props.inLibrary;
 
     return(
       <section>
@@ -65,13 +59,7 @@ class Movie extends Component {
       </tbody>
 
       </table>
-
-      <div>
-
-{pleaseShow}
-      </div>
-
-        </section>
+      </section>
     )
 
   }

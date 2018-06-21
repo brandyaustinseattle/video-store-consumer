@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Customer from './Customer';
+import PropTypes from 'prop-types';
 
 class Customers extends Component {
+
+  static propTypes = {
+    rentalCallback: PropTypes.func,
+  }
 
   constructor() {
     super();
@@ -26,6 +31,10 @@ class Customers extends Component {
     });
   }
 
+  rentalCallback = (customerInfo) => {
+    this.props.rentalCallback(customerInfo);
+  }
+
   render() {
 
     const customers =  this.state.customers.map((customer, index) => {
@@ -33,9 +42,11 @@ class Customers extends Component {
       return(
         <section>
           < Customer key={index}
+            customerId={customer.id}
             name={customer.name}
             phone={customer.phone}
-            checked_out={customer.movies_checked_out_count}
+            checkedOut={customer.movies_checked_out_count}
+            rentMovie={this.rentalCallback}
             />
         </section>
       )
@@ -44,7 +55,6 @@ class Customers extends Component {
     return(
       <section>
         {customers}
-
       </section>
     )
   }

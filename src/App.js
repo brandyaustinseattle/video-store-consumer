@@ -4,6 +4,7 @@ import './App.css';
 import MovieLibrary from './components/MovieLibrary';
 import Movie from './components/Movie';
 import Customer from './components/Customer'
+import RentalForm from './components/RentalForm'
 import Search from './components/Search';
 import Customers from './components/Customers';
 import Home from './components/Home';
@@ -19,8 +20,8 @@ class App extends Component {
 
     this.state = {
 
-        movie:'',
-        customer:'',
+        // movie:'',
+        // customer:'',
 
       status: {
         message: 'loaded the page',
@@ -29,19 +30,19 @@ class App extends Component {
     }
   }
 
-  selectedCustomer = (customer) => {
-    this.setState({
-        customer:customer.id
-    });
-
-  }
-
-  selectedMovie = (movie) => {
-    this.setState({
-        movie: movie.title,
-    });
-
-  }
+  // selectedCustomer = (customer) => {
+  //   this.setState({
+  //       customer:customer.id
+  //   });
+  //
+  // }
+  //
+  // selectedMovie = (movie) => {
+  //   this.setState({
+  //       movie: movie.title,
+  //   });
+  //
+  // }
 
   //what do we do w/ updateStatusCallback which we originally had with movies
   //do we need to put it in the route area
@@ -88,18 +89,22 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route path="/Search" component={Search} />
               <Route path="/Customers" component={Customers}
-               render = {() => {
-                 return(<MovieLibrary rentalCallback={this.selectedCustomer}/>)
-               }
-             }/>
+               // render = {() => {
+               //   return(<MovieLibrary rentalCallback={this.selectedCustomer}/>)
+               // }
+             />
               <Route path="/MovieLibrary" component={MovieLibrary}
-              render = {() => {
-                return(<Movie rentalCallback={this.selectedMovie}/>)
-              }
-            }/>
+              // render = {() => {
+              //   return(<Movie rentalCallback={this.selectedMovie}/>)
+              // }
+            />
 
             </div>
           </Router>
+
+          <div>
+            <RentalForm movieTitle='' customerId='' customerName='' />
+          </div>
 
         </header>
 
