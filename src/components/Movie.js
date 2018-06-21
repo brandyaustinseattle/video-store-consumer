@@ -31,6 +31,8 @@ class Movie extends Component {
      };
     }
 
+    const display = displayButton();
+
     return(
       <section>
       <table>
@@ -58,8 +60,11 @@ class Movie extends Component {
 
       </tbody>
 
+      {display}
+
       </table>
-      </section>
+
+        </section>
     )
 
   }
