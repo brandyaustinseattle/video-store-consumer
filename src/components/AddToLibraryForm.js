@@ -41,7 +41,7 @@ class AddToLibraryForm extends Component {
         <input type="hidden" name='release_date' value={this.state.release_date} />
         <input type="hidden" name='image_url' value={this.state.image_url} />
 
-        <button type="submit">Rent {this.state.title}</button>
+        <button type="submit">Add {this.state.title} to Library</button>
       </form>
     )
   }
