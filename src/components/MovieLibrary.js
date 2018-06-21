@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import Movie from './Movie';
 import axios from 'axios';
+import PropTypes from 'prop-types'
 
 class MovieLibrary extends Component {
+
+  static propTypes = {
+    rentalCallback: PropTypes.isRequired
+  }
 
   constructor() {
     super();
@@ -27,6 +32,14 @@ class MovieLibrary extends Component {
     });
   }
 
+  movieCallback = (movieTitle) => {
+    console.log('made it to the Library');
+    console.log(movieTitle);
+    console.log(this.props.rentalCallback(movieTitle));
+
+    this.props.rentalCallback(movieTitle);
+  }
+
 
   render() {
 
@@ -39,7 +52,8 @@ class MovieLibrary extends Component {
             overview={movie.overview}
             release_date={movie.release_date}
             image_url={movie.image_url}
-            inLibrary={false}/>
+            inLibrary={false}
+            rentMovie={this.movieCallback}/>
         </section>
       )
     });

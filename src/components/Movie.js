@@ -9,11 +9,16 @@ class Movie extends Component {
     overview: PropTypes.string,
     release_date: PropTypes.string,
     image_url: PropTypes.string.isRequired,
-    inLibrary: PropTypes.bool
+    inLibrary: PropTypes.bool,
+    rentMovie: PropTypes.func
   }
 
-  onClickHandler = () => {
-    this.props.rentalCallback()
+  onClickHandler = (event) => {
+    console.log('made it to movie clickhandler');
+    console.log(this.props.rentMovie);
+    let movieTitle = event.target.name;
+    console.log(movieTitle);
+    this.props.rentMovie(movieTitle);
   }
 
 
@@ -25,7 +30,7 @@ class Movie extends Component {
      }else{
 
        return(
-         <button onClick={this.onClickHandler}>add to rental</button>
+         <button name={this.props.title} onClick={this.onClickHandler}>add to rental</button>
        )
 
      };

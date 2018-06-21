@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Customers from './Customers';
+import MovieLibrary from './MovieLibrary';
 
 class RentalForm extends Component {
 
@@ -32,9 +33,11 @@ class RentalForm extends Component {
     });
   }
 
-  selectedMovie = (movie) => {
+  selectedMovie = (movieTitle) => {
+    console.log('did we make it to the form?');
+    console.log(movieTitle);
     this.setState({
-      movieTitle: movie.title,
+      movieTitle: movieTitle
     });
 
   }
@@ -64,6 +67,7 @@ class RentalForm extends Component {
         </form>
 
         <Customers rentalCallback={this.selectedCustomer} />
+        <MovieLibrary rentalCallback={this.selectedMovie} />
       </div>
     )
   }
