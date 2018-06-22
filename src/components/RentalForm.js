@@ -38,17 +38,9 @@ class RentalForm extends Component {
   }
 
   onFormSubmit = (event) => {
-    let URL = `http://localhost:3000/movies?title=${this.state.title}&overview=${this.state.overview}&release_date=${this.state.release_date}&image_url=${this.state.image_url}`
-    event.preventDefault();
-    axios.post(URL)
-    .then((response)=> {
-      console.log(response);
-      console.log(response.data);
-    })
-    .catch((error) => {
-      // this.props.updateStatusCallback(error.message, 'error');
-
-    });
+    console.log('in onFormSubmit')
+    console.log(event);
+    console.log(event.target);
   }
 
   render(){
