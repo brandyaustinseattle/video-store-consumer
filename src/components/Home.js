@@ -3,14 +3,9 @@ import PropTypes from 'prop-types';
 
 class Home extends Component {
 
-  // constructor() {
-  //   super();
-  //
-  // }
-
   render() {
     return(
-      <h1>You are home!</h1>
+      <h1>Click the links above to navigate the site.</h1>
     )
   }
 }

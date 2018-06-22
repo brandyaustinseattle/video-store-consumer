@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import SearchForm from './SearchForm';
+import RentalForm from './RentalForm';
 import Movie from './Movie';
 
 class Search extends Component {
@@ -46,10 +47,17 @@ class Search extends Component {
 
     return(
 
-      <div>
-        <SearchForm searchCallback={this.processSearchTerm} />
-        {searchResults}
-      </div>
+      <section>
+        <div>
+          <h1>SEARCH JS</h1>
+          <RentalForm movieTitle='' customerId='' customerName='' hideCustomers={true} hideMovies={true} />
+        </div>
+
+        <div>
+          <SearchForm searchCallback={this.processSearchTerm} />
+          {searchResults}
+        </div>
+      </section>
     )
   }
 }

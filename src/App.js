@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import MovieLibrary from './components/MovieLibrary';
-import Movie from './components/Movie';
-import Customer from './components/Customer'
-import RentalForm from './components/RentalForm'
-import Search from './components/Search';
-import Customers from './components/Customers';
+import FormPage from './components/FormPage';
 import Home from './components/Home';
+import Search from './components/Search';
 import Status from './components/Status';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -20,8 +15,9 @@ class App extends Component {
 
     this.state = {
 
-        // movie:'',
-        // customer:'',
+      movieTitle: '',
+      customerId: '',
+      customerName: '',
 
       status: {
         message: 'loaded the page',
@@ -30,22 +26,6 @@ class App extends Component {
     }
   }
 
-  // selectedCustomer = (customer) => {
-  //   this.setState({
-  //       customer:customer.id
-  //   });
-  //
-  // }
-  //
-  // selectedMovie = (movie) => {
-  //   this.setState({
-  //       movie: movie.title,
-  //   });
-  //
-  // }
-
-  //what do we do w/ updateStatusCallback which we originally had with movies
-  //do we need to put it in the route area
   updateStatus = (message, type) => {
     this.setState({
       status: {
@@ -55,9 +35,26 @@ class App extends Component {
     })
   }
 
+  custHandler = (customerInfo) => {
+    console.log('in custHandler');
+    console.log(customerInfo);
+    this.setState({
+      customerId: customerInfo.id,
+      customerName: customerInfo.name
+    });
+  }
+
+  movHandler = (movieTitle) => {
+    console.log('in movHandler');
+    console.log(movieTitle);
+    this.setState({
+      movieTitle: movieTitle
+    });
+  }
+
   render() {
     return (
-      <div className="App">
+      <section className="App">
 
         <div>
           <Status message={this.state.status.message} types={this.state.status.type} />
@@ -65,14 +62,13 @@ class App extends Component {
 
         <header>
           <h1 className="App-title">blockbuster</h1>
-          <h5>Selected Movie: {this.state.movie}</h5>
-          <h5>Selected Customer: {this.state.customer}</h5>
+
           <Router>
             <div>
               <ul>
-              <li>
-                <Link to="/Home">Home</Link>
-              </li>
+                <li>
+                  <Link to="/Home">Home</Link>
+                </li>
                 <li>
                   <Link to="/Search">Search</Link>
                 </li>
@@ -84,31 +80,21 @@ class App extends Component {
                 </li>
               </ul>
 
-              <hr />
+              <hr/>
 
-              <Route exact path="/" component={Home} />
+              <Route path="/Home" component={Home} />
+
               <Route path="/Search" component={Search} />
-              <Route path="/Customers" component={Customers}
-               // render = {() => {
-               //   return(<MovieLibrary rentalCallback={this.selectedCustomer}/>)
-               // }
-             />
-              <Route path="/MovieLibrary" component={MovieLibrary}
-              // render = {() => {
-              //   return(<Movie rentalCallback={this.selectedMovie}/>)
-              // }
-            />
 
+              <Route path="/MovieLibrary" component={() => <FormPage selectedCustHandler={this.custHandler} selectedMovHandler={this.movHandler} movieTitle={this.state.movieTitle} customerId={this.state.customerId} customerName={this.state.customerName} hideMovies={false} hideCustomers={true} />}  />
+
+              <Route path="/Customers" component={() => <FormPage selectedCustHandler={this.custHandler} selectedMovHandler={this.movHandler} movieTitle={this.state.movieTitle} customerId={this.state.customerId} customerName={this.state.customerName} hideMovies={true} hideCustomers={false} />} />
             </div>
           </Router>
 
-          <div>
-            <RentalForm movieTitle='' customerId='' customerName='' />
-          </div>
-
         </header>
 
-      </div>
+      </section>
     );
   }
 }

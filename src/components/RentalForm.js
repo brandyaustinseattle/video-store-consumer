@@ -8,8 +8,12 @@ class RentalForm extends Component {
 
   static propTypes = {
     movieTitle: PropTypes.string,
-    customerId: PropTypes.number,
-    customerName: PropTypes.string
+    customerId: PropTypes.string,
+    customerName: PropTypes.string,
+    hideCustomers: PropTypes.bool,
+    hideMovies: PropTypes.bool,
+    selectedMovHandler: PropTypes.func,
+    selectedCustHandler: PropTypes.func
   }
 
   constructor(props) {
@@ -18,28 +22,19 @@ class RentalForm extends Component {
     this.state = {
       movieTitle: props.movieTitle,
       customerId: props.customerId,
-      customerName: props.customerName
+      customerName: props.customerName,
+      hideCustomers: props.hideCustomers,
+      hideMovies: props.hideMovies
     };
 
   }
 
   selectedCustomer = (customerInfo) => {
-    let customerId = customerInfo.id;
-    let customerName = customerInfo.name;
-
-    this.setState({
-      customerId: customerId,
-      customerName: customerName
-    });
+    this.props.selectedCustHandler(customerInfo);
   }
 
   selectedMovie = (movieTitle) => {
-    console.log('did we make it to the form?');
-    console.log(movieTitle);
-    this.setState({
-      movieTitle: movieTitle
-    });
-
+    this.props.selectedMovHandler(movieTitle);
   }
 
   onFormSubmit = (event) => {
@@ -61,13 +56,17 @@ class RentalForm extends Component {
     return(
       <div>
         <form onSubmit={this.onFormSubmit}>
+          <label htmlFor="movieTitle">Title:   </label>
           <input readOnly type="text" name='movieTitle' value={this.state.movieTitle} />
+
+          <label htmlFor="customerName">Name:   </label>
           <input readOnly type="text" name='customerName' value={this.state.customerName} />
           <button type="submit">rent</button>
         </form>
 
-        <Customers rentalCallback={this.selectedCustomer} />
-        <MovieLibrary rentalCallback={this.selectedMovie} />
+        {!this.state.hideCustomers && <Customers rentalCallback={this.selectedCustomer} />}
+
+        {!this.state.hideMovies && <MovieLibrary rentalCallback={this.selectedMovie} />}
       </div>
     )
   }

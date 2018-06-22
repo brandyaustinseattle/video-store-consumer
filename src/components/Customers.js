@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Customer from './Customer';
+import RentalForm from './RentalForm';
 import PropTypes from 'prop-types';
 
 class Customers extends Component {
@@ -40,22 +41,26 @@ class Customers extends Component {
     const customers =  this.state.customers.map((customer, index) => {
 
       return(
+
+        <div>
+
         <section>
           < Customer key={index}
             customerId={customer.id}
             name={customer.name}
             phone={customer.phone}
-            checkedOut={customer.movies_checked_out_count}
             rentMovie={this.rentalCallback}
             />
         </section>
+        </div>
       )
     });
 
     return(
-      <section>
+
+      <div>
         {customers}
-      </section>
+      </div>
     )
   }
 }
