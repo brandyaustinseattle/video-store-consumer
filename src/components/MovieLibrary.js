@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Movie from './Movie';
 import axios from 'axios';
 import PropTypes from 'prop-types'
+import './MovieLibrary.js';
+import '../App.css';
 
 class MovieLibrary extends Component {
 
@@ -61,7 +63,6 @@ class MovieLibrary extends Component {
     return(
       <section>
         {movies}
-
       </section>
     )
 

@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: #00064d;
+  color: #bbbbbb;
 }
 
 .App-logo {
@@ -15,7 +17,9 @@
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 2em;
+  margin-top: 1em;
+
 }
 
 .App-intro {
@@ -34,4 +38,14 @@ table {
   background-color: lightyellow;
   width: 95%;
   text-align: left;
+}
+
+.ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  border: 1px ;
+  margin-top: 5em;
+
+
 }

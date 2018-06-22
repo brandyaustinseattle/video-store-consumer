@@ -65,7 +65,7 @@ class App extends Component {
 
           <Router>
             <div>
-              <ul>
+              <ul className="ul">
                 <li>
                   <Link to="/Home">Home</Link>
                 </li>
