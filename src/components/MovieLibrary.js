@@ -19,7 +19,7 @@ class MovieLibrary extends Component {
   }
 
   componentDidMount() {
-     const MOVIE_URL = 'http://localhost:3000/movies'
+    const MOVIE_URL = 'http://localhost:3000/movies'
 
     axios.get(MOVIE_URL)
     .then((response) => {
