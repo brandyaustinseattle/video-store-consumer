@@ -38,9 +38,31 @@ class RentalForm extends Component {
   }
 
   onFormSubmit = (event) => {
-    console.log('in onFormSubmit')
-    console.log(event);
+    event.preventDefault();
+    console.log('in onFormSubmit');
     console.log(event.target);
+
+    let movieTitle = this.state.movieTitle;
+    let customerId = this.state.customerId;
+
+    let date = new Date();
+    date.setDate(date.getDate() + 7);
+
+    const RENTAL_URL = `http://localhost:3000/rentals/${movieTitle}/check-out`
+
+    axios.post(RENTAL_URL, {
+      title: movieTitle,
+      customer_id: customerId,
+      due_date: date
+    })
+    .then((response) => {
+
+      console.log(response);
+    })
+    .catch((error) => {
+
+     // this.props.updateStatusCallback(error.message, 'error');
+    });
   }
 
   render(){
@@ -53,12 +75,13 @@ class RentalForm extends Component {
 
           <label htmlFor="customerName">Name:   </label>
           <input readOnly type="text" name='customerName' value={this.state.customerName} />
-          <button type="submit">rent</button>
-        </form>
+          <input type="submit" value="rent" />
 
         {!this.state.hideCustomers && <Customers rentalCallback={this.selectedCustomer} />}
 
         {!this.state.hideMovies && <MovieLibrary rentalCallback={this.selectedMovie} />}
+
+        </form>
       </div>
     )
   }
